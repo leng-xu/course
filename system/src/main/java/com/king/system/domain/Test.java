@@ -1,7 +1,5 @@
 package com.king.system.domain;
 
-import org.springframework.stereotype.Component;
-
 public class Test {
 
     private String id;
