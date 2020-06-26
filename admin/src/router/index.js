@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Login from '../views/login.vue'
 import Admin from '../views/admin.vue'
 import Welcome from '../views/admin/welcome'
+import Chapter from '../views/admin/chapter'
+
 
 Vue.use(VueRouter)
 
@@ -26,6 +28,11 @@ const routes = [
                 path: 'welcome',
                 name: 'Welcome',
                 component: Welcome
+            },
+            {
+                path: 'chapter',
+                name: 'Chapter',
+                component: Chapter
             }
         ]
     }

@@ -1,6 +1,9 @@
 
 
 
+insert into chapter (id, course_id, name) VALUES ('00000000', '00000000', '测试大章一');
+insert into chapter (id, course_id, name) VALUES ('00000001', '00000000', '测试大章二');
+
 drop table if exists `chapter`;
 create table `chapter` (
     `id` varchar(8) not null comment 'ID',
