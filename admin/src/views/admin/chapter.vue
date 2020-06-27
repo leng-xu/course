@@ -986,9 +986,19 @@
     export default {
         name: 'chapter',
         mounted: function() {//组件每次加载都会执行
+            let _this = this;
+            _this.list();
             // this.$parent.activeSidebar("business-chapter-sidebar"); sidebar 激活样式方法一
         },
         methods:{
+            list() {
+                let _this = this;
+                _this.$axios.get("http://127.0.0.1:9002/business/admin/chapter/list").then(
+                    (response) => {
+                        console.log("查询大章结果：", response);
+                    }
+                );
+            }
         }
     }
 </script>
