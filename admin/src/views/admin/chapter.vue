@@ -981,3 +981,14 @@
         </tbody>
     </table>
 </template>
+
+<script>
+    export default {
+        name: 'chapter',
+        mounted: function() {//组件每次加载都会执行
+            this.$parent.activeSidebar("business-chapter-sidebar");
+        },
+        methods:{
+        }
+    }
+</script>

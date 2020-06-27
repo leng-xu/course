@@ -30,7 +30,7 @@ const routes = [
                 component: Welcome
             },
             {
-                path: 'chapter',
+                path: 'business/chapter',
                 name: 'Chapter',
                 component: Chapter
             }
