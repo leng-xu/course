@@ -4,15 +4,9 @@ public class ChapterDTO {
 
     private String id;
 
-    private String courseId;
+    private String name;
 
-    @Override
-    public String toString() {
-        return "ChapterDTO{" +
-                "id='" + id + '\'' +
-                ", courseId='" + courseId + '\'' +
-                '}';
-    }
+    private String courseId;
 
     public String getId() {
         return id;
@@ -20,6 +14,14 @@ public class ChapterDTO {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCourseId() {
