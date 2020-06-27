@@ -8,7 +8,7 @@
     export default {
         name: 'welcome',
         mounted: function() {//组件每次加载都会执行
-            this.$parent.activeSidebar("welcome-sidebar");
+            //this.$parent.activeSidebar("welcome-sidebar");  sidebar 激活样式方法一
         },
         methods:{
         }

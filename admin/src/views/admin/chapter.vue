@@ -986,7 +986,7 @@
     export default {
         name: 'chapter',
         mounted: function() {//组件每次加载都会执行
-            this.$parent.activeSidebar("business-chapter-sidebar");
+            // this.$parent.activeSidebar("business-chapter-sidebar"); sidebar 激活样式方法一
         },
         methods:{
         }
