@@ -89,10 +89,13 @@
         methods:{
             list() {
                 let _this = this;
-                _this.$axios.get("http://127.0.0.1:9000/business/admin/chapter/list").then(
+                _this.$axios.post("http://127.0.0.1:9000/business/admin/chapter/list", {
+                    page: 1,
+                    size: 1
+                }).then(
                     (response) => {
                         console.log("查询大章结果：", response);
-                        _this.chapters = response.data;
+                        _this.chapters = response.data.list;
                     }
                 );
             }

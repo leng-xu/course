@@ -1,10 +1,9 @@
 package com.king.business.service;
 
-import com.king.business.dto.ChapterDTO;
-import java.util.List;
+import com.king.business.dto.PageDTO;
 
 public interface ChapterService {
 
-    List<ChapterDTO> list();
+    void list(PageDTO pageDTO);
 
 }
