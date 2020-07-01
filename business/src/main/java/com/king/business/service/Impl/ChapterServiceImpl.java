@@ -1,5 +1,6 @@
 package com.king.business.service.Impl;
 
+import com.github.pagehelper.PageHelper;
 import com.king.business.domain.Chapter;
 import com.king.business.dto.ChapterDTO;
 import com.king.business.mapper.ChapterMapper;
@@ -19,6 +20,7 @@ public class ChapterServiceImpl implements ChapterService {
 
     @Override
     public List<ChapterDTO> list() {
+        PageHelper.startPage(1, 1);
         List<Chapter> chapterList = chapterMapper.list();
         List<ChapterDTO> chapterDTOList = new ArrayList<>();
         for (int i = 0; i < chapterList.size(); i++) {
