@@ -8,6 +8,9 @@
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
 
+        <!--        覆盖生成 XML 文件-->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+
         <!--        生成实体类加toString()方法-->
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
 
@@ -28,12 +31,12 @@
 
         <!--        mapper xml的位置-->
         <sqlMapGenerator targetProject="src\main\resources"
-                            targetPackage="mapper"/>
+                         targetPackage="mapper"/>
 
         <!--        mapper 类的位置-->
         <javaClientGenerator targetProject="src\main\java"
-                            targetPackage="com.king.system.mapper"
-                            type="XMLMAPPER"/>
+                             targetPackage="com.king.system.mapper"
+                             type="XMLMAPPER"/>
 
         <table tableName="test" domainObjectName="Test"/>
 
