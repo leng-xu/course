@@ -1,6 +1,11 @@
 <template>
     <div>
         <p>
+            <button @click="add()" class="btn btn-success">
+                <i class="ace-icon fa fa-edit"></i>
+                新增
+            </button>
+            &nbsp;
             <button @click="list(1)" class="btn btn-success">
                 <i class="ace-icon fa fa-refresh"></i>
                 刷新
@@ -78,12 +83,47 @@
             </tr>
             </tbody>
         </table>
+
         <pagination ref="pagination" v-bind:list="list"></pagination>
+
+        <!--新增大章模态框-->
+        <div class="modal fade" tabindex="-1" role="dialog" id="add">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">表单</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">名称</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" placeholder="名称">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">课程ID</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" placeholder="课程ID">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary">保存</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
     </div>
 </template>
 
 <script>
     import Pagination from "../../components/pagination";
+
     export default {
         components: {Pagination},
         name: 'chapter',
@@ -99,6 +139,10 @@
             // this.$parent.activeSidebar("business-chapter-sidebar"); sidebar 激活样式方法一
         },
         methods: {
+            add () {
+                let _this = this;
+                $('#add').modal('show');  // 初始化后立即调用 show 方法
+            },
             list(page) {
                 let _this = this;
                 _this.$axios.post("http://127.0.0.1:9000/business/admin/chapter/list", {
