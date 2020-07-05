@@ -1,7 +1,7 @@
 <template>
     <div>
         <p>
-            <button @click="list()" class="btn btn-success">
+            <button @click="list(1)" class="btn btn-success">
                 <i class="ace-icon fa fa-refresh"></i>
                 刷新
             </button>
@@ -78,11 +78,14 @@
             </tr>
             </tbody>
         </table>
+        <pagination ref="pagination" v-bind:list="list"></pagination>
     </div>
 </template>
 
 <script>
+    import Pagination from "../../components/pagination";
     export default {
+        components: {Pagination},
         name: 'chapter',
         data: function () {
             return {
@@ -91,19 +94,21 @@
         },
         mounted: function () {//组件每次加载都会执行
             let _this = this;
-            _this.list();
+            _this.$refs.pagination.size = 5;
+            _this.list(1);
             // this.$parent.activeSidebar("business-chapter-sidebar"); sidebar 激活样式方法一
         },
         methods: {
-            list() {
+            list(page) {
                 let _this = this;
                 _this.$axios.post("http://127.0.0.1:9000/business/admin/chapter/list", {
-                    page: 1,
-                    size: 1
+                    page: page,
+                    size: _this.$refs.pagination.size,
                 }).then(
                     (response) => {
                         console.log("查询大章结果：", response);
                         _this.chapters = response.data.list;
+                        _this.$refs.pagination.render(page, response.data.total)
                     }
                 );
             }
