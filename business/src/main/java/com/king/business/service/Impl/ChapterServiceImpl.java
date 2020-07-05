@@ -7,12 +7,14 @@ import com.king.business.dto.ChapterDTO;
 import com.king.business.dto.PageDTO;
 import com.king.business.mapper.ChapterMapper;
 import com.king.business.service.ChapterService;
+import com.king.server.util.CopyUtil;
 import com.king.server.util.UUIDUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +27,20 @@ public class ChapterServiceImpl implements ChapterService {
 
     @Override
     public void save(ChapterDTO chapterDTO) {
-        chapterDTO.setId(UUIDUtil.getShortUUID());
-        Chapter chapter = new Chapter();
-        BeanUtils.copyProperties(chapterDTO, chapter);
+        Chapter chapter = CopyUtil.copy(chapterDTO, Chapter.class);
+        if (StringUtils.isEmpty(chapterDTO.getId())) {
+            this.insert(chapter);
+        } else {
+            this.update(chapter);
+        }
+    }
+
+    private void update(Chapter chapter) {
+        chapterMapper.updateByPrimaryKey(chapter);
+    }
+
+    private void insert(Chapter chapter) {
+        chapter.setId(UUIDUtil.getShortUUID());
         chapterMapper.insert(chapter);
     }
 

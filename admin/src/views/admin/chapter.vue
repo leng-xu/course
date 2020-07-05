@@ -28,20 +28,11 @@
                 <td>{{chapter.courseId}}</td>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
-                        <button class="btn btn-xs btn-success">
-                            <i class="ace-icon fa fa-check bigger-120"></i>
-                        </button>
-
-                        <button class="btn btn-xs btn-info">
+                        <button v-on:click="edit(chapter)" class="btn btn-xs btn-info">
                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                         </button>
-
                         <button class="btn btn-xs btn-danger">
                             <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                        </button>
-
-                        <button class="btn btn-xs btn-warning">
-                            <i class="ace-icon fa fa-flag bigger-120"></i>
                         </button>
                     </div>
 
@@ -86,7 +77,7 @@
 
         <pagination ref="pagination" v-bind:list="list"></pagination>
 
-        <!--新增大章模态框-->
+        <!--新增或者编辑大章模态框-->
         <div class="modal fade" tabindex="-1" role="dialog" id="form-modal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -140,9 +131,15 @@
             // this.$parent.activeSidebar("business-chapter-sidebar"); sidebar 激活样式方法一
         },
         methods: {
-
             add () {
                 let _this = this;
+                _this.chapter = {};
+                $('#form-modal').modal('show');  // 初始化后立即调用 show 方法
+            },
+
+            edit (chapter) {
+                let _this = this;
+                _this.chapter = $.extend({}, chapter);  // v-model 双向绑定问题
                 $('#form-modal').modal('show');  // 初始化后立即调用 show 方法
             },
 
