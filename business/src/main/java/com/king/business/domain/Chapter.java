@@ -1,21 +1,11 @@
 package com.king.business.domain;
 
 public class Chapter {
-
     private String id;
 
     private String courseId;
 
     private String name;
-
-    @Override
-    public String toString() {
-        return "Chapter{" +
-                "id='" + id + '\'' +
-                ", courseId='" + courseId + '\'' +
-                ", name='" + name + '\'' +
-                '}';
-    }
 
     public String getId() {
         return id;
@@ -41,4 +31,16 @@ public class Chapter {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", courseId=").append(courseId);
+        sb.append(", name=").append(name);
+        sb.append("]");
+        return sb.toString();
+    }
 }

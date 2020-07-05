@@ -8,6 +8,15 @@ public class ChapterDTO {
 
     private String courseId;
 
+    @Override
+    public String toString() {
+        return "ChapterDTO{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", courseId='" + courseId + '\'' +
+                '}';
+    }
+
     public String getId() {
         return id;
     }

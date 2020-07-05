@@ -46,4 +46,14 @@ public class PageDTO<T> {
     public void setList(List<T> list) {
         this.list = list;
     }
+
+    @Override
+    public String toString() {
+        return "PageDTO{" +
+                "page=" + page +
+                ", size=" + size +
+                ", total=" + total +
+                ", list=" + list +
+                '}';
+    }
 }
