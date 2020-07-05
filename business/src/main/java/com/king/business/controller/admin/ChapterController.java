@@ -3,6 +3,7 @@ package com.king.business.controller.admin;
 import com.king.business.dto.ChapterDTO;
 import com.king.business.dto.PageDTO;
 import com.king.business.service.ChapterService;
+import com.king.server.dto.ResponseDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +21,21 @@ public class ChapterController {
     private ChapterService chapterService;
 
     @PostMapping("/list")
-    public PageDTO list(@RequestBody PageDTO pageDTO) {
+    public ResponseDTO list(@RequestBody PageDTO pageDTO) {
         LOG.info("/admin/chapter/list，入参：PageDTO：{}", pageDTO.toString());
+        ResponseDTO responseDTO = new ResponseDTO();
         chapterService.list(pageDTO);
-        return pageDTO;
+        responseDTO.setContent(pageDTO);
+        return responseDTO;
     }
 
     @PostMapping("/save")
-    public ChapterDTO save(@RequestBody ChapterDTO chapterDTO) {
+    public ResponseDTO save(@RequestBody ChapterDTO chapterDTO) {
         LOG.info("/admin/chapter/save，入参：ChapterDTO：{}", chapterDTO.toString());
+        ResponseDTO responseDTO = new ResponseDTO();
         chapterService.save(chapterDTO);
-        return chapterDTO;
+        responseDTO.setContent(chapterDTO);
+        return responseDTO;
     }
 
 }
