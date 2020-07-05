@@ -9,8 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/admin/chapter")
 public class ChapterController {
@@ -35,6 +33,14 @@ public class ChapterController {
         ResponseDTO responseDTO = new ResponseDTO();
         chapterService.save(chapterDTO);
         responseDTO.setContent(chapterDTO);
+        return responseDTO;
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseDTO save(@PathVariable String id) {
+        LOG.info("/admin/chapter/delete，入参：id：{}", id);
+        ResponseDTO responseDTO = new ResponseDTO();
+        chapterService.delete(id);
         return responseDTO;
     }
 

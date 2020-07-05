@@ -9,13 +9,10 @@ import com.king.business.mapper.ChapterMapper;
 import com.king.business.service.ChapterService;
 import com.king.server.util.CopyUtil;
 import com.king.server.util.UUIDUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +21,11 @@ public class ChapterServiceImpl implements ChapterService {
 
     @Autowired
     private ChapterMapper chapterMapper;
+
+    @Override
+    public void delete(String id) {
+        chapterMapper.deleteByPrimaryKey(id);
+    }
 
     @Override
     public void save(ChapterDTO chapterDTO) {
