@@ -15,8 +15,11 @@ public class TestServiceImpl implements TestService {
     private TestMapper testMapper;
 
     @Override
-    public List<Test> list() {
-        return testMapper.list();
+    public Integer list() {
+        Test test = new Test();
+        test.setId("111");
+        test.setName("test");
+        return testMapper.insert(test);
     }
 
 }

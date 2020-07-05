@@ -14,7 +14,7 @@ public class TestController {
     private TestService testService;
 
     @GetMapping("/test")
-    public List<Test> test() {
+    public Integer test() {
         return testService.list();
     }
 
